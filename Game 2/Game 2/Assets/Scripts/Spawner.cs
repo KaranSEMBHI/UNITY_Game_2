@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    // Static instance variable to hold the singleton instance
+    private static Spawner _instance;
+
+    // Public property to access the singleton instance
+    public static Spawner Instance => _instance;
+
     // The prefab to be spawned by the spawner
     public GameObject prefab;
 
@@ -13,6 +19,13 @@ public class Spawner : MonoBehaviour
 
     // The maximum height at which the prefabs are spawned
     public float maxHeight = 1f;
+
+    // Called when the script instance is being loaded
+    private void Awake()
+    {
+        // Set the singleton instance
+        _instance = this;
+    }
 
     // Called every time the script instance is enabled
     private void OnEnable()
